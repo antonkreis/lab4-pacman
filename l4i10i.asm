@@ -262,9 +262,11 @@ move proc near
     mov ah, 01h
     int 16h 
     mov input, al
+    push ax
     mov ah, 0Ch   
     xor dx, dx
-    int 21h      
+    int 21h  
+    pop ax    
     mov di, position  
     ;cmp es:[di+2], border 
     mov al, input
@@ -314,20 +316,20 @@ print_empty:
 ;====================
 continue:    
     
-    cmp al, "w" ; direction up
-    je pacman_move_up 
-    cmp al, "s" ; direction down 
-    je pacman_move_down 
-    cmp al, "a" ; direction left
-    je pacman_move_left 
-    cmp al, "d" ; direction right   
-    ;cmp ax, 4818h ; direction up
+    ;cmp al, "w" ; direction up
 ;    je pacman_move_up 
-;    cmp ax, 5019h ; direction down 
+;    cmp al, "s" ; direction down 
 ;    je pacman_move_down 
-;    cmp ax, 4B1Ah ; direction left
+;    cmp al, "a" ; direction left
 ;    je pacman_move_left 
-;    cmp ax, 4D1Bh ; direction right
+;    cmp al, "d" ; direction right   
+    cmp ah, 48h ; direction up
+    je pacman_move_up 
+    cmp ah, 50h ; direction down 
+    je pacman_move_down 
+    cmp ah, 4Bh ; direction left
+    je pacman_move_left 
+    cmp ah, 4Dh ; direction right
     je pacman_move_right 
 check_pacman_direction_flags:    
     cmp pacman_left_flag, 1
