@@ -98,7 +98,7 @@ game_string dw yellow_G, yellow_A, yellow_M, yellow_E
 over_string dw yellow_O, yellow_V, yellow_E, yellow_R
 victory_string dw yellow_V, yellow_I, yellow_C, yellow_T, yellow_O, yellow_R, yellow_Y
 pause_string dw yellow_P, yellow_A, yellow_U, yellow_S, yellow_E
-empty_string dw 5 dup empty     
+empty_string dw 5 dup (empty)     
 
 score dw ? 
 bonus_counter dw ?   
