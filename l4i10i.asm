@@ -233,7 +233,7 @@ greeting_input:
     mov ah, 8
     int 21h    
     cmp al, 1Bh ; ESC
-    je endgame
+    je end_program
     cmp al, 0Dh ; Enter
     je end_draw_greeting
     jmp greeting_input     
@@ -271,7 +271,7 @@ move proc near
     ;cmp es:[di+2], border 
     mov al, input
     cmp al, 1Bh ; ESC
-    je endgame
+    je end_program
     cmp al, 20h ; space -> pause
     jne continue 
 ;===============pause 
@@ -297,7 +297,7 @@ print_pause:
     cmp al, 20h
     je pause
     cmp al, 1Bh ; ESC
-    je endgame 
+    je end_program 
     mov cx, 3
     mov di, 532h 
 print_empty:    
